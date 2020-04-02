@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueAxiosPlugin from 'vue-axios-plugin'
+import router from './router/router.js'
 
 Vue.config.productionTip = false
 
@@ -14,5 +15,6 @@ Vue.use(VueAxiosPlugin, {
 })
 
 new Vue({
+	router,
   render: h => h(App),
 }).$mount('#app')
