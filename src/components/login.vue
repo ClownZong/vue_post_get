@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<input type="text" v-module="user" placeholder="用户名">
-		<input type="password" v-module="password" placeholder="密码">
+		<input type="text" v-model="user" placeholder="用户名">
+		<input type="password" v-model="password" placeholder="密码">
 		<button @click="login()">登录</button>
 	</div>
 </template>
@@ -21,19 +21,19 @@
 			// 	}
 			// };
 		},
-		method: {
-			login:function(){ // 登录
+		methods: {
+			login(){ // 登录
 				if(this.user == "" || this.password == ""){
 					alert("请输入信息")
 				}else {
-					axios({
+					this.$axios({
 						url: "/user/login",
 						method: "post",
 						baseURL: "http://192.168.0.142:8888/v3",
 						headers: {
 							"Content-Type": "application/json",
-							"user": this.loginInfo.user,
-							"password": this.loginInfo.password
+							"user": this.user,
+							"password": this.password
 						},
 						// data: {
 						// 	user: "admin",
@@ -46,8 +46,8 @@
 			}
 		},
 		// 钩子函数调用
-		mounted: function() {
-			this.login()
+		mounted() {
+			// this.login()
 		}
 	}
 </script>
